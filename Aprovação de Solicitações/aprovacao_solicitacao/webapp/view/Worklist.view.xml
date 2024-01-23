@@ -1,0 +1,115 @@
+<mvc:View
+    controllerName="rodrigo.desafio5p.aprovacaosolicitacao.controller.Worklist"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic">
+
+    <semantic:SemanticPage
+        id="page"
+        showFooter="true"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false">
+
+        <semantic:titleHeading>
+            <Title
+                text="{i18n>worklistTitle}"
+                level="H2"/>
+        </semantic:titleHeading>
+
+        <semantic:content>
+            <Table
+                id="table"
+                mode="MultiSelect"
+                width="auto"
+                items="{
+                    path: '/SolicitacaoSet',
+                    sorter: {
+                        path: 'Material',
+                        descending: false
+                    },
+                    parameters:{
+                        expand:'toMaterial,toPreco'
+                    }
+                }"
+                noDataText="{worklistView>/tableNoDataText}"
+                busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished=".onUpdateFinished">
+
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title
+                            id="tableHeader"
+                            text="{worklistView>/worklistTableTitle}"
+                            level="H3"/>
+                        <ToolbarSpacer />
+                        <SearchField
+                            id="searchField"
+                            tooltip="{i18n>worklistSearchTooltip}"
+                            search=".onSearch">
+                            <layoutData>
+                                <OverflowToolbarLayoutData
+                                    maxWidth="200px"
+                                    priority="NeverOverflow"/>
+                            </layoutData>
+                        </SearchField>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column>
+                        <Text text="ID"/>
+                    </Column>
+                    <Column hAlign="Begin">
+                        <Text text="Material" />
+                    </Column>
+                     <Column hAlign="End">
+                        <Text text="Preço Atual" />
+                    </Column>
+                    <Column hAlign="End">
+                        <Text text="Preço Novo" />
+                    </Column>
+                      <Column hAlign="End">
+                        <Text text="Data" />
+                    </Column>
+                      <Column hAlign="End">
+                        <Text text="Hora" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem
+                        type="Navigation"
+                        press=".onPress">
+                        <cells>
+                            <ObjectIdentifier
+                                title="{Id}"/>
+                            <ObjectIdentifier
+                                title="{Material}" text="{toMaterial/Descricao} ({toMaterial/CodigoExterno})" />
+                            <Text text="{toPreco/Valor}"/>
+                            <Text text="{PrecoNovo}"/>
+                            <Text text="{path:'DataSolicitacao',type: 'sap.ui.model.type.Date',formatOptions: {
+                                style: 'medium'
+                            }}"/>
+                           <Text text="{path:'HoraSolicitacao',type: 'sap.ui.model.odata.type.Time'}"/>
+
+                            
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </semantic:content>
+
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+        </semantic:sendEmailAction>
+
+        <semantic:footerCustomActions>
+            <Button text="Rejeitar" press="onRejeitar"/>
+            <Button text="Aprovar" press="onAprovar"/>
+        </semantic:footerCustomActions>
+        
+    </semantic:SemanticPage>
+
+</mvc:View>
