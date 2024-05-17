@@ -2,7 +2,8 @@ Projeto Sap Fiori Cadastro de materiais e seus respectivos preços , solicitaç�
 
 No decorrer do projeto, no Eclipse, criei pacotes para organizar meus projetos SAP e utilizei requests para gerenciar a transferência de objetos entre sistemas. Na criação de tabelas, diretamente no Eclipse, defini colunas e tipos.
 
-Ao lidar com CDS Views, desenvolvi modelos de dados semânticos e utilizei anotações para adicionar significado semântico, enriquecendo os metadados. Estas anotações incluíram categorias, grupos e até subgrupos, proporcionando uma compreensão mais rica e estruturada dos dados. Explorei diferentes tipos de CDS Views, como Basic, Projection e Transacional, estabelecendo associações entre tabelas quando necessário. Transformei algumas CDS Views em objetos de negócios usando Behavior Definition para suportar operações CRUD.
+Ao lidar com CDS Views, desenvolvi modelos de dados semânticos e utilizei anotações para adicionar significado semântico, enriquecendo os metadados. Estas anotações incluíram categorias, grupos e até subgrupos, 
+proporcionando uma compreensão mais rica e estruturada dos dados. Explorei diferentes tipos de CDS Views, como Basic, Projection e Transacional, estabelecendo associações entre tabelas quando necessário. Transformei algumas CDS Views em objetos de negócios usando Behavior Definition para suportar operações CRUD.
 
 Ao criar aplicativos, optei pelo Fiori Elements, aproveitando templates e metadados OData no VSCode. Conectei esses aplicativos ao serviço OData que desenvolvi. No processo de deploy, utilizei o VSCode para enviar arquivos ao servidor SAP.
 
